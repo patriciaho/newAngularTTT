@@ -3,40 +3,8 @@
 <html>
 	<head>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.min.js" ></script>
-		<style>
-			.cell {
-				height: 50px;
-				width: 50px;
-				border: 1px solid black;
-				margin: 5px;
-				float: left;
-				border-radius: 5px;
-				font-family: sans-serif;
-				font-size: 45px;
-				text-align: center;
-			}
-
-			.clear {
-				clear:left;
-			}
-
-			.yellow {
-				background-color: yellow;
-				border: 1px solid yellow;
-				color: gray;
-			}
-
-			.gray {
-				background-color: gray;
-				border: 1px solid gray;
-				color: yellow;
-			}
-
-			.body {
-				width: 100%;
-				margin: 0 auto;
-			}
-		</style>
+		<script type="text/javascript" src="main.js"></script>
+		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
 
 	<body x-ng-app="" x-ng-init="" x-ng-controller="allCTRL">
@@ -53,75 +21,4 @@
 		</div>
 		<span>{{board}}</span>
 	</body>
-
-	<script type="text/javascript">
-		function allCTRL($scope) {
-			$scope.board = [];
-			$scope.xTurn = {val:true};
-			gameover = false;
-
-			$scope.makeBoard = function () {
-				for (var i = 0; i < ($scope.xsquared * $scope.xsquared); i++) {
-					$scope.board.push('');
-				}
-			}
-			
-			$scope.ticClick = function($index){
-		 		$scope.board[$index] = ($scope.board[$index] == '' ? (($scope.xTurn.val = !$scope.xTurn.val) ? 'X' : 'O' ) : $scope.board[$index]);
-		 		// alert($index+(2*$scope.xsquared));
-		 		if ($scope.board[$index] == 'X' && 
-		 			$scope.board[$index+1] == 'X' && 
-		 			$scope.board[$index+2] == 'X')
-		 			alert('Xwins!');
-		 		if ($scope.board[$index] == 'X' && 
-		 			$scope.board[$index-1] == 'X' && 
-		 			$scope.board[$index-2] == 'X')
-		 			alert('Xwins!');
-		 		if ($scope.board[$index] == 'X' && 
-		 			$scope.board[$index-1] == 'X' && 
-		 			$scope.board[$index+1] == 'X')
-		 			alert('Xwins!');
-		 		if ($scope.board[$index] == 'X' && 
-		 			$scope.board[$index + $scope.xsquared] == 'X' && 
-		 			$scope.board[$index + (2*$scope.xsquared)] == 'X')
-		 			alert('Xwins!');
-		 		if ($scope.board[$index] == 'X' && 
-		 			$scope.board[$index - $scope.xsquared] == 'X' && 
-		 			$scope.board[$index - (2*$scope.xsquared)] == 'X')
-		 			alert('Xwins!');
-		 		if ($scope.board[$index] == 'X' && 
-		 			$scope.board[$index - $scope.xsquared] == 'X' && 
-		 			$scope.board[$index + $scope.xsquared] == 'X')
-		 			alert('Xwins!');
-		 		if ($scope.board[$index] == 'X' && 
-		 			$scope.board[$index + $scope.xsquared + 1] == 'X' && 
-		 			$scope.board[$index + (2*($scope.xsquared)) +2] == 'X')
-		 			alert('Xwins!');
-		 		if ($scope.board[$index] == 'O' && 
-		 			$scope.board[$index+1] == 'O' && 
-		 			$scope.board[$index+2] == 'O')
-		 			alert('Owins!');
-		 		if ($scope.board[$index] == 'O' && 
-		 			$scope.board[$index-1] == 'O' && 
-		 			$scope.board[$index-2] == 'O')
-		 			alert('Owins!');
-		 		if ($scope.board[$index] == 'O' && 
-		 			$scope.board[$index-1] == 'O' && 
-		 			$scope.board[$index+1] == 'O')
-		 			alert('Owins!');
-		 		if ($scope.board[$index] == 'O' && 
-		 			$scope.board[$index + $scope.xsquared] == 'O' && 
-		 			$scope.board[$index + (2*$scope.xsquared)] == 'O')
-		 			alert('Owins!');
-		 		if ($scope.board[$index] == 'O' && 
-		 			$scope.board[$index - $scope.xsquared] == 'O' && 
-		 			$scope.board[$index - (2*$scope.xsquared)] == 'O')
-		 			alert('Owins!');
-		 		if ($scope.board[$index] == 'O' && 
-		 			$scope.board[$index - $scope.xsquared] == 'O' && 
-		 			$scope.board[$index + $scope.xsquared] == 'O')
-		 			alert('Owins!');
-	 		};
-		}
-	</script>
 </html>
