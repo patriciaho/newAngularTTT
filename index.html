@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.min.js" ></script>
+		<style>
+			.cell {
+				height: 50px;
+				width: 50px;
+				border: 1px solid black;
+				margin: 5px;
+				float: left;
+			}
+
+			.clear {
+				clear:left;
+			}
+		</style>
+	</head>
+
+	<body x-ng-app="" x-ng-init="" x-ng-controller="allCTRL">
+		<form x-ng-submit="makeBoard()">
+			<input type="text" x-ng-model="xsquared" />
+			<input type="submit" value="Let's do this!" />
+		</form>
+		<div id="main" style="height: 500px; width: 500px; border: 1px solid black;">
+			<div x-ng-repeat="c in board" 
+			x-ng-class="{clear:$index%{{xsquared}} == 0, cell:true}">{{$index}}
+			</div>
+		</div>
+		<span>{{board}}</span>
+	</body>
+
+	<script type="text/javascript">
+		function allCTRL($scope) {
+			$scope.board = []
+			$scope.makeBoard = function () {
+				for (var i = 0; i < ($scope.xsquared * $scope.xsquared); i++) {
+					$scope.board.push(i);
+				}
+			}
+			$scope.tellMe = function() {
+				console.log($scope.xsquared)
+			}
+		}
+	</script>
+</html>
