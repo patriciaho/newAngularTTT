@@ -1,13 +1,20 @@
+body {
+	width: 100%;
+	text-align: center;
+	background-color: lightgray;
+}
 .cell {
 	height: 50px;
 	width: 50px;
-	border: 1px solid black;
+	border: 1px solid white;
 	margin: 5px;
 	float: left;
 	border-radius: 5px;
 	font-family: sans-serif;
 	font-size: 45px;
 	text-align: center;
+	background-color: white;
+
 }
 
 .clear {
@@ -26,7 +33,13 @@
 	color: yellow;
 }
 
-.body {
-	width: 100%;
+#main {
+	width:800px;
 	margin: 0 auto;
 }
+
+
+
+
+
+

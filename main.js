@@ -10,7 +10,14 @@ function allCTRL($scope) {
 	}
 	
 	$scope.ticClick = function($index){
-		$scope.board[$index] = ($scope.board[$index] == '' ? (($scope.xTurn.val = !$scope.xTurn.val) ? 'X' : 'O' ) : $scope.board[$index]);
+		if ($scope.board[$index] == '')
+			$scope.xTurn.val = !$scope.xTurn.val;
+			if ($scope.xTurn.val == true)
+				$scope.board[$index] = 'X';
+			else
+				$scope.board[$index] = 'O';
+
+		// $scope.board[$index] = ($scope.board[$index] == '' ? (($scope.xTurn.val = !$scope.xTurn.val) ? 'X' : 'O' ) : $scope.board[$index]);
 		// alert($index+(2*$scope.xsquared));
 		if ($scope.board[$index] == 'X' && 
 			$scope.board[$index+1] == 'X' && 
