@@ -31,37 +31,51 @@ function allCTRL($scope) {
 		};
 	};
 	
-	$scope.ticClick = function(r, c){
-		if ($scope.board[r][c] == '')
+	$scope.ticClick = function(row, cell){
+		if ($scope.board[row][cell] == '') {
 			$scope.xTurn.val = !$scope.xTurn.val;
-			if ($scope.xTurn.val == true)
-				$scope.board[r][c] = 'X';
-			else
-				$scope.board[r][c] = 'O';
+			if ($scope.xTurn.val == true) {
+				$scope.board[row][cell] = 'X'}
+			else {
+				$scope.board[row][cell] = 'O'
+			};
+		};
 	};
 
 	//Win Logic
-	$scope.checkWin = function(r, c, player) {
-		for( var i = 0; i < 3; i++) {
-			a = 0; b = 0; d = 0; e = 0; f = 3;
-			for (var j = 0; j < 3; j++) {
+	$scope.checkWin = function(row, cell, player) {
+		for( var i = 0; i < 3; i += 1) {
+			a = 0; b = 0; d = 0; e = 0; f = 0; g = 0;
+			for (var j = 0; j < 3; j += 1) {
 				//horizontal win from left
-				if ($scope.board[r+i][c+j] == player) {a++}
+				if ($scope.board[row][cell+j] == player) {a += 1};
 				//horizontal win from right
-				if ($scope.board[r-i][c-j] == player) {b++}
+				if ($scope.board[row][cell-j] == player) {b += 1};
 				//horizontal win from center
-				if ($scope.board[r-i][c-j] == player) {d++}
+				if ($scope.board[row][cell+j-1] == player) {d += 1};
+				//vertical win from bottom	
+				if (row-j >= 0) {	
+					if ($scope.board[row-j][cell] == player) {e += 1};
+				}
 				//vertical win from top
-				if ($scope.board[r+j][c+i] == player) {e++}
-				//vertical win from bottom
-				if ($scope.board[r-j][c-i] == player) {f++}
+				if (row+j < $scope.xsquared) {	
+					if ($scope.board[row+j][cell] == player) {f += 1};
+				}
+				//vertical win from center
+				if (row+j-1 >= 0 && row+j-1 < $scope.xsquared) {
+					if ($scope.board[row+j-1][cell] == player) {g += 1};
+					console.log(f)
+				}
+				// if (row-j+1 <= $scope.xsquared) {
+				// 	if ($scope.board[row-j+1][cell] == player) {f += 1};
+				// }
 			};
-			if (a == 3 || b == 3 || d == 3 || e == 3 || f == 3) {
-				if (player == 'X')
-					{$scope.xWins++};
-				if (player == 'O')
-					{$scope.oWins++};
-			};
+			if (a == 3 || b == 3 || d == 3 || e == 3 || f == 3 || g== 3) {
+					if (player == 'X') 
+						$scope.xWins += 1;
+					else
+						$scope.oWins += 1;
+				};
 		};	
 	};
 }
