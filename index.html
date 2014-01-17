@@ -13,11 +13,14 @@
 			<input type="submit" value="Let's do this!" />
 		</form>
 		<div id="main" x-ng-style="mainSize()">
-			<div x-ng-repeat="c in board track by $index" 
-			x-ng-class="{clear:$index%{{xsquared}} == 0, cell:true, yellow:board[$index] == 'X', gray:board[$index] == 'O'}"
-			x-ng-click="ticClick($index); ">
+			<div x-ng-repeat="row in board track by $index" x-ng-class="{clear:true}">
+			<!-- <div x-ng-repeat="cell in row track by $index" 
+			x-ng-class="cell:true, yellow:board[$parent.$index][$index] == 'X', gray:board[$parent.$index][$index] == 'O'}"
+			x-ng-click="ticClick($parent.$index, $index); ">
 			{{board[$index]}}
+			</div> -->
 			</div>
+			{{board}}
 		</div>
 	</body>
 </html>

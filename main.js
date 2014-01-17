@@ -4,9 +4,41 @@ function allCTRL($scope) {
 	gameover = false;
 
 	$scope.makeBoard = function () {
-		for (var i = 0; i < ($scope.xsquared * $scope.xsquared); i++) {
-			$scope.board.push('');
+		// for (var i = 0; i < ($scope.xsquared); i++) {
+		// 	$scope.board.push('');
+		// }
+
+		// for(i = 0; i < ($scope.xsquared); i++) {
+  //       	$scope.board.push([null]);
+  //       	$scope.board[i].push
+  //       	// for (j = 0; j < ($scope.xsquared); j++) {
+  //       	// 	$scope.board[j].push(null);
+  //       	// }
+  //   	}
+
+    	var result = new Array();
+
+			for(var i = 0; i < ($scope.xsquared); i++) {
+			  var arr = new Array();
+			  for(var j = 0; j < ($scope.xsquared); j++) {
+			    arr.push('');
+			  }
+			  result.push(arr);
 		}
+
+		$scope.board = result
+
+    	// console.log($scope.board[i])
+
+    	// for(i = 0; i < ($scope.xsquared); i++) {
+     //    	$scope.board[i].push('hi');
+    	// }
+    	// console.log($scope.board)
+
+		// for (var i = 0; i < ($scope.xsquared); i++) {
+		// 		$scope.board[i].push('');
+		// }
+		
 	}
 
 	$scope.mainSize = function () {
