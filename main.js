@@ -47,6 +47,13 @@ function allCTRL($scope) {
 			height: ($scope.xsquared * 62) + 'px',
 		};
 	}
+
+	$scope.rowSize = function () {
+		return {
+			width: ($scope.xsquared * 62) + 'px',
+			height: (62) + 'px',
+		};
+	}
 	
 	$scope.ticClick = function($index){
 		if ($scope.board[$index] == '')
