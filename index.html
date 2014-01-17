@@ -9,18 +9,20 @@
 
 	<body x-ng-app="" x-ng-init="" x-ng-controller="allCTRL">
 		<form x-ng-submit="makeBoard()">
-			<input type="text" x-ng-model="xsquared" />
+			<input type="text" max-length="2" size="2"x-ng-model="xsquared" />
 			<input type="submit" value="Let's do this!" />
 		</form>
 		<div id="main" x-ng-style="mainSize()">
 			<div x-ng-repeat="row in board track by $index" x-ng-class="{clear:true}" x-ng-style="rowSize()">
 				<div x-ng-repeat="cell in row track by $index" 
 				x-ng-class="{gray:(board[$parent.$index][$index] == 'X'), yellow:(board[$parent.$index][$index] == 'O'), cell: true}"
-				x-ng-click="ticClick($parent.$index,$index);">
+				x-ng-click="ticClick($parent.$index,$index); checkWin($parent.$index,$index,board[$parent.$index][$index]);">
 				{{cell}}
 				</div>
 			</div>
 			{{board}}
+			X = {{xWins}}
+			O ={{oWins}}
 		</div>
 	</body>
 </html>
