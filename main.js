@@ -8,6 +8,13 @@ function allCTRL($scope) {
 			$scope.board.push('');
 		}
 	}
+
+	$scope.mainSize = function () {
+		return {
+			width: ($scope.xsquared * 62) + 'px',
+			height: ($scope.xsquared * 62) + 'px',
+		};
+	}
 	
 	$scope.ticClick = function($index){
 		if ($scope.board[$index] == '')

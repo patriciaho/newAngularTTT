@@ -3,6 +3,11 @@ body {
 	text-align: center;
 	background-color: lightgray;
 }
+
+form {
+	margin-top: 50px;
+}
+
 .cell {
 	height: 50px;
 	width: 50px;
@@ -34,7 +39,6 @@ body {
 }
 
 #main {
-	width:800px;
 	margin: 0 auto;
 }
 
