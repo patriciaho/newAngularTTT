@@ -15,7 +15,9 @@
 		<div id="main" x-ng-style="mainSize()">
 			<div x-ng-repeat="row in board track by $index" x-ng-class="{clear:true}" x-ng-style="rowSize()">
 				<div x-ng-repeat="cell in row track by $index" 
-				x-ng-class="{grayClick:(board[$parent.$index][$index] == 'X'), yellowClick:(board[$parent.$index][$index] == 'O'), cell: true}">
+				x-ng-class="{gray:(board[$parent.$index][$index] == 'X'), yellow:(board[$parent.$index][$index] == 'O'), cell: true}"
+				x-ng-click="ticClick($parent.$index,$index);">
+				{{cell}}
 				</div>
 			</div>
 			{{board}}
