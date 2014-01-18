@@ -45,7 +45,7 @@ function allCTRL($scope) {
 	//Win Logic
 	$scope.checkWin = function(row, cell, player) {
 		for( var i = 0; i < 3; i += 1) {
-			a = 0; b = 0; d = 0; e = 0; f = 0; g = 0;
+			a = 0; b = 0; d = 0; e = 0; f = 0; g = 0; h = 0; k = 0; m = 0;
 			for (var j = 0; j < 3; j += 1) {
 				//horizontal win from left
 				if ($scope.board[row][cell+j] == player) {a += 1};
@@ -64,13 +64,21 @@ function allCTRL($scope) {
 				//vertical win from center
 				if (row+j-1 >= 0 && row+j-1 < $scope.xsquared) {
 					if ($scope.board[row+j-1][cell] == player) {g += 1};
-					console.log(f)
 				}
-				// if (row-j+1 <= $scope.xsquared) {
-				// 	if ($scope.board[row-j+1][cell] == player) {f += 1};
-				// }
+				//diagonal down win from top
+				if (row+j < $scope.xsquared) {
+					if ($scope.board[row+j][cell+j] == player) {h += 1};
+				}
+				//diagonal down win from bottom 
+				if (row-j >= 0) {
+					if ($scope.board[row-j][cell-j] == player) {k += 1};
+				}
+				//diagonal up win 
+				if (row+j < $scope.xsquared) {
+					if ($scope.board[row-j][cell-j+2] == player) {m += 1};
+				}
 			};
-			if (a == 3 || b == 3 || d == 3 || e == 3 || f == 3 || g== 3) {
+			if (a == 3 || b == 3 || d == 3 || e == 3 || f == 3 || g == 3 || h == 3 || k == 3 || m == 3) {
 					if (player == 'X') 
 						$scope.xWins += 1;
 					else
