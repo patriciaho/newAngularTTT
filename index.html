@@ -8,10 +8,12 @@
 	</head>
 
 	<body x-ng-app="" x-ng-init="" x-ng-controller="allCTRL">
+		<div id="start" x-ng-hide="startGame">
 		<form x-ng-submit="makeBoard()">
-			<input type="text" max-length="2" size="2"x-ng-model="xsquared" />
+			<input type="text" size="2" x-ng-model="xsquared" />
 			<input type="submit" value="Let's do this!" />
 		</form>
+		</div>
 		<div id="main" x-ng-style="mainSize()">
 			<div x-ng-repeat="row in board track by $index" x-ng-class="{clear:true}" x-ng-style="rowSize()">
 				<div x-ng-repeat="cell in row track by $index" 
@@ -20,9 +22,10 @@
 				{{cell}}
 				</div>
 			</div>
-			X = {{xWins}}
-			O ={{oWins}}
-			{{winCounter}}
+			<div id="scoreBoard" x-ng-show="startGame">
+				X = {{xWins}}
+				O = {{oWins}}
+			</div>
 		</div>
 	</body>
 </html>

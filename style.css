@@ -1,7 +1,7 @@
 body {
 	width: 100%;
 	text-align: center;
-	background-color: lightgray;
+	background-color: #999999;
 }
 
 form {
@@ -39,6 +39,15 @@ form {
 	margin: 0 auto;
 }
 
+#start {
+	position: relative;
+	border: none;
+	height: 200px;
+	width: 200px;
+	margin: 100px auto;
+	padding: 100px;
+	background: #660BAB;
+}
 
 
 

@@ -3,18 +3,24 @@ function allCTRL($scope) {
 	$scope.xTurn = {val:true};
 	$scope.xWins = 0;
 	$scope.oWins = 0;
-	gameover = false;
+	$scope.startGame= false;
 
 	$scope.makeBoard = function () {
-    	var result = new Array();
+		if ($scope.xsquared >= 3 && $scope.xsquared <= 30) {
+	    	var result = new Array();
 			for(var i = 0; i < ($scope.xsquared); i++) {
 			  var arr = new Array();
 				  for(var j = 0; j < ($scope.xsquared); j++) {
 				    arr.push('');
 				  };
 			  result.push(arr);
+			};
+			$scope.board = result;
+			$scope.startGame= true;
+		}
+		else {
+			alert('Must be between 3 and 25');
 		};
-		$scope.board = result	
 	};
 
 	$scope.mainSize = function () {
@@ -35,7 +41,8 @@ function allCTRL($scope) {
 		if ($scope.board[row][cell] == '') {
 			$scope.xTurn.val = !$scope.xTurn.val;
 			if ($scope.xTurn.val == true) {
-				$scope.board[row][cell] = 'X'}
+				$scope.board[row][cell] = 'X'
+			}
 			else {
 				$scope.board[row][cell] = 'O'
 			};
@@ -82,7 +89,7 @@ function allCTRL($scope) {
 				if ($scope.board[row+j-1][cell-j+1] == player) {winCounter[11]=winCounter[11]+1};
 			}
 		};
-		//Test wins
+		//Tally wins
 		for (var i = 0; i < winCounter.length; i++) {
 			if (winCounter[i] == 3) {
 				if (player == 'X') 
