@@ -10,7 +10,7 @@ function allCTRL($scope) {
 		var playerArray = new Array();
 		for (var i = 0; i < $scope.playerNumber; i++) {
 			playerArray.push({piece: pieces[i], tally: 0})
-		};
+		}
 		$scope.players = playerArray;
 		$scope.turn = playerArray[0].piece;
 		console.log ($scope.turn);
@@ -30,21 +30,21 @@ function allCTRL($scope) {
 		}
 		else {
 			alert('Must be between 3 and 25');
-		};
+		}
 	};
 
 	$scope.mainSize = function () {
 		return {
 			width: ($scope.xsquared * 60) + 'px',
 			height: ($scope.xsquared * 60) + 'px',
-		};
+		}
 	};
 
 	$scope.rowSize = function () {
 		return {
 			width: ($scope.xsquared * 60) + 'px',
 			height: (60) + 'px',
-		};
+		}
 	};
 	
 	$scope.ticClick = function(row, cell){
@@ -58,10 +58,10 @@ function allCTRL($scope) {
 					if ($scope.turn == $scope.players[i].piece && i < $scope.players.length-1) {
 						$scope.turn = $scope.players[(i+1)].piece;
 						break;
-					};
-				};
-			};	
-		};
+					}
+				}
+			}	
+		}
 	};
 
 	//Win Logic
@@ -70,59 +70,53 @@ function allCTRL($scope) {
 		for (var j = 0; j < 3; j++) {
 
 			//horizontal wins from left, right, center
-			if ($scope.board[row][cell+j] == player) {winCounter[0]=winCounter[0]+1};
-			if ($scope.board[row][cell-j] == player) {winCounter[1]=winCounter[1]+1};
-			if ($scope.board[row][cell+j-1] == player) {winCounter[2]=winCounter[2]+1};
+			if ($scope.board[row][cell+j] == player) {winCounter[0]++};
+			if ($scope.board[row][cell-j] == player) {winCounter[1]++};
+			if ($scope.board[row][cell+j-1] == player) {winCounter[2]++};
 			//vertical wins from bottom, top, center
 			if (row-j >= 0) {	
-				if ($scope.board[row-j][cell] == player) {winCounter[3]=winCounter[3]+1};
+				if ($scope.board[row-j][cell] == player) {winCounter[3]++};
 			}
 			if (row+j < $scope.xsquared) {	
-				if ($scope.board[row+j][cell] == player) {winCounter[4]=winCounter[4]+1};
+				if ($scope.board[row+j][cell] == player) {winCounter[4]++};
 			}
 			if (row+j-1 >= 0 && row+j-1 < $scope.xsquared) {
-				if ($scope.board[row+j-1][cell] == player) {winCounter[5]=winCounter[5]+1};
+				if ($scope.board[row+j-1][cell] == player) {winCounter[5]++};
 			}
 			//diagonal down wins from top, bottom, center
 			if (row+j < $scope.xsquared) {
-				if ($scope.board[row+j][cell+j] == player) {winCounter[6]=winCounter[6]+1};
+				if ($scope.board[row+j][cell+j] == player) {winCounter[6]++};
 			}
 			if (row-j >= 0) {
-				if ($scope.board[row-j][cell-j] == player) {winCounter[7]=winCounter[7]+1};
+				if ($scope.board[row-j][cell-j] == player) {winCounter[7]++};
 			}
 			if (row+j-1 >= 0 && row+j-1 < $scope.xsquared) {
-				if ($scope.board[row+j-1][cell+j-1] == player) {winCounter[8]=winCounter[8]+1};
+				if ($scope.board[row+j-1][cell+j-1] == player) {winCounter[8]++};
 			}
 			//diagonal up wins from top, bottom, center
 			if (row-j >= 0) {
-				if ($scope.board[row-j][cell+j] == player) {winCounter[9]=winCounter[9]+1};
+				if ($scope.board[row-j][cell+j] == player) {winCounter[9]++};
 			}
 			if (row+j < $scope.xsquared) {
-				if ($scope.board[row+j][cell-j] == player) {winCounter[10]=winCounter[10]+1};
+				if ($scope.board[row+j][cell-j] == player) {winCounter[10]++};
 			}
 			if (row+j-1 >= 0 && row+j-1 < $scope.xsquared) {
-				if ($scope.board[row+j-1][cell-j+1] == player) {winCounter[11]=winCounter[11]+1};
+				if ($scope.board[row+j-1][cell-j+1] == player) {winCounter[11]++};
 			}
 		};
 		//Tally wins
 		for (var i = 0; i < winCounter.length; i++) {
 			if (winCounter[i] == 3) {
-				if (player == $scope.players[0].piece) {
-					$scope.players[0].tally = $scope.players[0].tally + 1;
-				};
-				if (player == $scope.players[1].piece) {
-					$scope.players[1].tally = $scope.players[1].tally + 1;
-				};
-				if (player == $scope.players[2].piece) {
-					$scope.players[2].tally = $scope.players[2].tally + 1;
-				};
-				if (player == $scope.players[3].piece) {
-					$scope.players[3].tally = $scope.players[3].tally + 1;
-				};
-			};
-		};	
+				for(var p = 0; p < $scope.players.length; p++)
+				{
+					if (player == $scope.players[p].piece) {
+						$scope.players[p].tally++;
+					}
+				}
+			}
+		}	
 	};
-}
+};
 
 
 
