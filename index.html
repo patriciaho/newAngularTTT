@@ -5,26 +5,32 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.min.js" ></script>
 		<script type="text/javascript" src="main.js"></script>
 		<link rel="stylesheet" type="text/css" href="style.css">
+		<link href='http://fonts.googleapis.com/css?family=Roboto:100' rel='stylesheet' type='text/css'>
 	</head>
 
 	<body x-ng-app="" x-ng-init="" x-ng-controller="allCTRL">
 		<div id="start" x-ng-hide="startGame">
-		<form x-ng-submit="makeBoard()">
-			<input type="text" size="2" x-ng-model="xsquared" />
-			<input type="submit" value="Let's do this!" />
-		</form>
+			<h1>&#730;Bx</h1>
+			<h2></h2>
+			<form x-ng-submit="makeBoard()">
+				<input type="text" size="2" x-ng-model="playerNumber" />
+				<input type="text" size="2" x-ng-model="xsquared" />
+				<input type="submit" style="font-family: 'Roboto'; color: gray; background-color: #FFCB00; height: 50px; width: 100px;" value="Let's do this!" />
+			</form>
 		</div>
 		<div id="main" x-ng-style="mainSize()">
 			<div x-ng-repeat="row in board track by $index" x-ng-class="{clear:true}" x-ng-style="rowSize()">
 				<div x-ng-repeat="cell in row track by $index" 
-				x-ng-class="{gray:(board[$parent.$index][$index] == 'X'), yellow:(board[$parent.$index][$index] == 'O'), cell: true}"
+				x-ng-class="{gray:(board[$parent.$index][$index] == players[0].piece), yellow:(board[$parent.$index][$index] == players[1].piece), cell: true}"
 				x-ng-click="ticClick($parent.$index,$index); checkWin($parent.$index,$index,board[$parent.$index][$index]);">
 				{{cell}}
 				</div>
 			</div>
 			<div id="scoreBoard" x-ng-show="startGame">
-				X = {{xWins}}
-				O = {{oWins}}
+				{{players[0].piece}} = {{players[0].tally}}
+				{{players[1].piece}} = {{players[1].tally}}
+				{{players[2].piece}} = {{players[2].tally}}
+				{{players[3].piece}} = {{players[3].tally}}
 			</div>
 		</div>
 	</body>

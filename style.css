@@ -5,7 +5,20 @@ body {
 }
 
 form {
-	margin-top: 50px;
+	margin: 5px;
+	padding: 0;
+}
+
+h1 {
+	font-size: 100px;
+	padding: 0;
+	margin: 0;
+}
+
+h2 {
+	font-size: 20px;
+	padding: 0;
+	margin: 0;
 }
 
 .cell {
@@ -26,27 +39,31 @@ form {
 }
 
 .yellow {
-	background-color: yellow;
+	background-color: #FFCB00;
 	color: gray;
 }
 
 .gray {
 	background-color: gray;
-	color: yellow;
+	color: #FFCB00;
 }
 
 #main {
-	margin: 0 auto;
+	margin: 100px auto;
 }
 
 #start {
 	position: relative;
 	border: none;
-	height: 200px;
-	width: 200px;
+	height: 400px;
+	width: 400px;
 	margin: 100px auto;
-	padding: 100px;
-	background: #660BAB;
+	padding: 50px;
+/*	background: #660BAB;*/
+	color: #FFCB00;
+	font-size: 100px;
+	font-family: 'Roboto', cursive;
+	font-weight: 100;
 }
 
 

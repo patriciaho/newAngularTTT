@@ -1,11 +1,21 @@
 function allCTRL($scope) {
 	$scope.board = [];
-	$scope.xTurn = {val:true};
 	$scope.xWins = 0;
 	$scope.oWins = 0;
-	$scope.startGame= false;
+	$scope.startGame = false;
+	$scope.players = []
+	var pieces = ["\u2605", "\u25CF", "\u25FC", "\u25B2"]
 
 	$scope.makeBoard = function () {
+		var playerArray = new Array();
+		for (var i = 0; i < $scope.playerNumber; i++) {
+			playerArray.push({piece: pieces[i], tally: 0})
+		};
+		$scope.players = playerArray;
+		$scope.turn = playerArray[0].piece;
+		console.log ($scope.turn);
+		console.log($scope.players[$scope.players.length-1].piece);
+		console.log($scope.players[0].tally)
 		if ($scope.xsquared >= 3 && $scope.xsquared <= 30) {
 	    	var result = new Array();
 			for(var i = 0; i < ($scope.xsquared); i++) {
@@ -39,13 +49,18 @@ function allCTRL($scope) {
 	
 	$scope.ticClick = function(row, cell){
 		if ($scope.board[row][cell] == '') {
-			$scope.xTurn.val = !$scope.xTurn.val;
-			if ($scope.xTurn.val == true) {
-				$scope.board[row][cell] = 'X'
+			$scope.board[row][cell] = $scope.turn;
+			if ($scope.turn == $scope.players[$scope.players.length-1].piece) {
+				$scope.turn = $scope.players[0].piece;
 			}
 			else {
-				$scope.board[row][cell] = 'O'
-			};
+				for (i = 0; i < $scope.players.length; i++) {
+					if ($scope.turn == $scope.players[i].piece && i < $scope.players.length-1) {
+						$scope.turn = $scope.players[(i+1)].piece;
+						break;
+					};
+				};
+			};	
 		};
 	};
 
@@ -92,11 +107,19 @@ function allCTRL($scope) {
 		//Tally wins
 		for (var i = 0; i < winCounter.length; i++) {
 			if (winCounter[i] == 3) {
-				if (player == 'X') 
-					$scope.xWins += 1;
-				else
-					$scope.oWins += 1;
-			}
+				if (player == $scope.players[0].piece) {
+					$scope.players[0].tally = $scope.players[0].tally + 1;
+				};
+				if (player == $scope.players[1].piece) {
+					$scope.players[1].tally = $scope.players[1].tally + 1;
+				};
+				if (player == $scope.players[2].piece) {
+					$scope.players[2].tally = $scope.players[2].tally + 1;
+				};
+				if (player == $scope.players[3].piece) {
+					$scope.players[3].tally = $scope.players[3].tally + 1;
+				};
+			};
 		};	
 	};
 }
