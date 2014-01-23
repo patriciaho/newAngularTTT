@@ -13,9 +13,6 @@ function allCTRL($scope) {
 		}
 		$scope.players = playerArray;
 		$scope.turn = playerArray[0].piece;
-		console.log ($scope.turn);
-		console.log($scope.players[$scope.players.length-1].piece);
-		console.log($scope.players[0].tally)
 		if ($scope.xsquared >= 3 && $scope.xsquared <= 30) {
 	    	var result = new Array();
 			for(var i = 0; i < ($scope.xsquared); i++) {
